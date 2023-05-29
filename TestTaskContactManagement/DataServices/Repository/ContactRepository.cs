@@ -22,5 +22,22 @@ namespace DataServices.Repository
         {
             return await _context.Contacts.ToListAsync();
         }
+
+        public async Task<Contact> Get(int id)
+        {
+            return await _context.Contacts.FindAsync(id);
+        }
+
+        public async Task Update(Contact contact)
+        {
+            _context.Entry(contact).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(Contact contact)
+        {
+            _context.Contacts.Remove(contact);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -13,6 +13,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<IUploadRepository, UploadRepository>();
 
 var app = builder.Build();
 
